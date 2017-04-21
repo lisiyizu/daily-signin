@@ -17,6 +17,8 @@ smzdm, v2ex, jd jr, jd daily signin script
 | SITE | 默认是 smzdm，[avaliable sites](#avaliable-sites) | smzdm or v2ex or jd, [avaliable sites](#avaliable-sites) |
 | DUSERNAME | 对应站点的用户名 | username of your account |
 | DPASSWORD | 对应站点的密码 | password of yuur account |
+| ISBASE64 | 是否对需要用 base64 decode 密码 | Whether it is necessary to use the base64 decode password |
+| DEBUG | NODEJS 常见的 debug flag，可以用 `nightmare:action*` 来查看更多信息 | NODE JS common debugging signs, you can use `nightmares: action *` to see more information |
 
 
 ## Avaliable Sites
@@ -33,6 +35,17 @@ docker run --rm \
   -e SITE={{site:smzdm}} \
   -e DUSERNAME={{username}} \
   -e DPASSWORD={{password}} \
+  playdingnow/daily-signin
+```
+
+or
+
+```shell
+docker run --rm \
+  -e SITE={{site:smzdm}} \
+  -e DUSERNAME={{username}} \
+  -e DPASSWORD={{password}} \ # encoded base64 password
+  -e ISBASE64=1 \
   playdingnow/daily-signin
 ```
 
