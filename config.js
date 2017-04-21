@@ -1,5 +1,6 @@
-module.exports = {
+const config= {
   site: process.env.SITE || 'smzdm',
+  isBase64: Boolean(process.env.ISBASE64),
   profile: {
     username: process.env.DUSERNAME,
     password: process.env.DPASSWORD,
@@ -75,3 +76,9 @@ module.exports = {
     },
   },
 };
+
+if (config.isBase64) {
+  config.profile.password = Buffer.from(config.profile.password, 'base64').toString();
+}
+
+module.exports = config;
