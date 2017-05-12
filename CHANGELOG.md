@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/yidinghan/daily-signin/compare/v1.2.0...v1.3.0) (2017-05-12)
+
+
+### Features
+
+* **docker:** use multi stage to build images ([a3a4e8d](https://github.com/yidinghan/daily-signin/commit/a3a4e8d))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/yidinghan/daily-signin/compare/v1.1.0...v1.2.0) (2017-04-21)
 
