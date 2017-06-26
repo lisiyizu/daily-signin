@@ -1,4 +1,4 @@
-FROM node:7.10.0-slim AS base
+FROM node:8.1.2-slim AS base
 LABEL maintainer "palydingnow@gmail.com"
 
 WORKDIR /app
