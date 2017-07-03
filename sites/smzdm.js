@@ -22,7 +22,7 @@ const run = () => {
     .click(ELES.loginButton)
     .resetFrame()
     .wait(ELES.userInfo)
-    .wait(1000)
+    .wait(5000)
     .click(ELES.dailySigninButton)
     // wait to done
     .wait(1000)

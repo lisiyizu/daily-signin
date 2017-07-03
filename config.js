@@ -1,4 +1,4 @@
-const config= {
+const config = {
   site: process.env.SITE || 'smzdm',
   isBase64: Boolean(process.env.ISBASE64),
   profile: {
@@ -47,9 +47,9 @@ const config= {
         usernameInput: '#username',
         passwordInput: '#password',
         loginButton: '#login_submit',
-        userInfo: '#index-head > div.J_entry.entry > div.user-wrap > div > div.user-info.J_info',
-        dailySigninButton: '#index-head > div.J_entry.entry > div.old-entry > span > a',
-        oldVersionButton: '#index-head > div.J_entry.entry > div.old-entry > a',
+        userInfo: '#index-head > div.J_entry.entry > div.user-wrap > div.user > div.user-info.not-login.J_info > a',
+        usernameLink: '#index-head > div.J_entry.entry > div.user-wrap > div.user > div.user-name.J_name > a',
+        dailySigninButton: '#index-head > div.J_entry.entry > div.old-entry > a',
       },
     },
     v2ex: {
