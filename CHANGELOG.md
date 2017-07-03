@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/yidinghan/daily-signin/compare/v1.2.0...v1.4.0) (2017-07-03)
+
+
+### Bug Fixes
+
+* **docker:** resume single stage dockerfile ([e0e7569](https://github.com/yidinghan/daily-signin/commit/e0e7569))
+* **docker:** should use --force with npm[@5](https://github.com/5) ([65fc0b6](https://github.com/yidinghan/daily-signin/commit/65fc0b6))
+* **smdzm:** new front end page ([f058ab9](https://github.com/yidinghan/daily-signin/commit/f058ab9))
+
+
+### Features
+
+* **docker:** use 8.1.2 as base img ([c3e3dfa](https://github.com/yidinghan/daily-signin/commit/c3e3dfa))
+* **docker:** use multi stage to build images ([95426c5](https://github.com/yidinghan/daily-signin/commit/95426c5))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/yidinghan/daily-signin/compare/v1.2.0...v1.3.0) (2017-05-12)
 
