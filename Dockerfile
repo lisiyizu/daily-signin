@@ -1,4 +1,4 @@
-FROM node:8.1.2-slim
+FROM node:8.2.1-slim
 LABEL maintainer "palydingnow@gmail.com"
 
 COPY ./ /src-app
