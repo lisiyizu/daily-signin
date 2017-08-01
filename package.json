@@ -21,9 +21,7 @@
   },
   "homepage": "https://github.com/yidinghan/daily-signin#readme",
   "dependencies": {
-    "chromeless": "^1.0.1",
-    "nightmare": "^2.10.0",
-    "nightmare-iframe-manager": "0.0.4"
+    "chromeless": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^4.3.0",
