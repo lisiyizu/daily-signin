@@ -11,19 +11,19 @@ const run = () => {
   return chromeless
     .goto(URLS.home)
     .wait(ELES.gotoLogin)
-    .screenshot()
     .click(ELES.gotoLogin)
     .wait(ELES.usernameLoginButton)
     .click(ELES.usernameLoginButton)
     .wait(ELES.usernameInput)
     .type(ELES.usernameInput, username)
     .type(ELES.passwordInput, password)
+    .click(ELES.loginButton)
+    .wait(ELES.checkinBtn)
+    .screenshot()
     .then((screenshot) => {
       console.log({ screenshot });
       return chromeless.end();
     });
-  //   .click(ELES.loginButton)
-  //   .wait(ELES.checkinBtn)
   //   .click(ELES.checkinBtn)
   //   .wait(ELES.checkinSuccess)
   //   // "签到成功" if success
