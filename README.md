@@ -6,6 +6,12 @@ https://github.com/graphcool/chromeless/issues/63
 
 https://423805089033-ap-southeast-1-chromeless.s3.amazonaws.com/cj5uc7z43000001qpv4b48juh.png
 
+local development
+
+```shell
+CL_URL=https://xxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/dev CL_KEY=xxx DUN=xxxxxxxxxxx DPW="xxxxxxxxxxxxxx" NODE_ENV=dev SITE=jd npm start
+```
+
 # daily-signin
 
 [![Docker Automated buil](https://img.shields.io/docker/automated/playdingnow/daily-signin.svg?style=flat-square)](https://hub.docker.com/r/playdingnow/daily-signin/)
