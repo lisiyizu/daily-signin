@@ -1,9 +1,15 @@
 const config = {
+  chromeless: {
+    remote: {
+      endpointUrl: process.env.CL_URL,
+      apiKey: process.env.CL_KEY,
+    },
+  },
   site: process.env.SITE || 'smzdm',
   isBase64: Boolean(process.env.ISBASE64),
   profile: {
-    username: process.env.DUSERNAME,
-    password: process.env.DPASSWORD,
+    username: process.env.DUSERNAME || process.env.DUN,
+    password: process.env.DPASSWORD || process.env.DPW,
   },
   sites: {
     jdjr: {
@@ -12,12 +18,14 @@ const config = {
       },
       elements: {
         gotoLogin: '#loginbar > a.link-login',
-        usernameLoginButton: '#content > div > div.w > div > div.login-tab.login-tab-r > a',
+        usernameLoginButton:
+          '#content > div > div.w > div > div.login-tab.login-tab-r > a',
         usernameInput: '#loginname',
         passwordInput: '#nloginpwd',
         loginButton: '#loginsubmit',
         checkinBtn: '#index-qian-btn',
-        checkinSuccess: 'body > div.mem-sign.bag-popup > div.member-sign > div.sign-center > div > p',
+        checkinSuccess:
+          'body > div.mem-sign.bag-popup > div.member-sign > div.sign-center > div > p',
       },
     },
     jd: {
@@ -26,14 +34,16 @@ const config = {
       },
       elements: {
         gotoLogin: '#ttbar-login > a.link-login',
-        usernameLoginButton: '#content > div > div.w > div > div.login-tab.login-tab-r > a',
+        usernameLoginButton:
+          '#content > div > div.w > div > div.login-tab.login-tab-r > a',
         usernameInput: '#loginname',
         passwordInput: '#nloginpwd',
         loginButton: '#loginsubmit',
         // "1113"
         jingBean: '#userJdNum',
         checkinBtn: '#checkinBtn > i',
-        checkinSuccess: 'body > div.ui-dialog.checkin-dialog.checkin.zoomIn.animated > div.ui-dialog-content > h2',
+        checkinSuccess:
+          'body > div.ui-dialog.checkin-dialog.checkin.zoomIn.animated > div.ui-dialog-content > h2',
       },
     },
     smzdm: {
@@ -47,9 +57,12 @@ const config = {
         usernameInput: '#username',
         passwordInput: '#password',
         loginButton: '#login_submit',
-        userInfo: '#index-head > div.J_entry.entry > div.user-wrap > div.user > div.user-info.not-login.J_info > a',
-        usernameLink: '#index-head > div.J_entry.entry > div.user-wrap > div.user > div.user-name.J_name > a',
-        dailySigninButton: '#index-head > div.J_entry.entry > div.old-entry > a',
+        userInfo:
+          '#index-head > div.J_entry.entry > div.user-wrap > div.user > div.user-info.not-login.J_info > a',
+        usernameLink:
+          '#index-head > div.J_entry.entry > div.user-wrap > div.user > div.user-name.J_name > a',
+        dailySigninButton:
+          '#index-head > div.J_entry.entry > div.old-entry > a',
       },
     },
     v2ex: {
@@ -59,9 +72,12 @@ const config = {
         dailyMission: 'https://www.v2ex.com/mission/daily',
       },
       elements: {
-        usernameInput: '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(1) > td:nth-child(2) > input',
-        passwordInput: '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(2) > td:nth-child(2) > input',
-        loginButton: '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(3) > td:nth-child(2) > input.super.normal.button',
+        usernameInput:
+          '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(1) > td:nth-child(2) > input',
+        passwordInput:
+          '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(2) > td:nth-child(2) > input',
+        loginButton:
+          '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(3) > td:nth-child(2) > input.super.normal.button',
         gotoDailySignin: '#Rightbar > div:nth-child(4) > div > a',
         dailySigninButton: '#Main > div.box > div:nth-child(2) > input',
         dailySigninResult: '#Main > div.box > div.message',
@@ -78,7 +94,10 @@ const config = {
 };
 
 if (config.isBase64) {
-  config.profile.password = Buffer.from(config.profile.password, 'base64').toString();
+  config.profile.password = Buffer.from(
+    config.profile.password,
+    'base64',
+  ).toString();
 }
 
 module.exports = config;
