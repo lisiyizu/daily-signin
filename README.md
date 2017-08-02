@@ -1,3 +1,11 @@
+# WIP
+
+no font support, no password support
+
+https://github.com/graphcool/chromeless/issues/63
+
+https://423805089033-ap-southeast-1-chromeless.s3.amazonaws.com/cj5uc7z43000001qpv4b48juh.png
+
 # daily-signin
 
 [![Docker Automated buil](https://img.shields.io/docker/automated/playdingnow/daily-signin.svg?style=flat-square)](https://hub.docker.com/r/playdingnow/daily-signin/)
