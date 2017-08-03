@@ -1,15 +1,15 @@
 const config = require('../config');
 
-const Nightmare = require('nightmare');
+const { Chromeless } = require('chromeless');
 
-const nightmare = Nightmare(config.nightmare);
+const { urls: URLS, elements: ELES } = config.sites.jd;
 
-const { urls: URLS, elements: ELES } = config.sites.jdjr;
 
 const run = () => {
   const { username, password } = config.profile;
+  const chromeless = new Chromeless(config.chromeless);
 
-  return nightmare
+  return chromeless
     .goto(URLS.home)
     .wait(ELES.gotoLogin)
     .click(ELES.gotoLogin)

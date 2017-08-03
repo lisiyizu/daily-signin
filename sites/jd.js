@@ -9,6 +9,7 @@ const run = () => {
   const chromeless = new Chromeless(config.chromeless);
 
   return chromeless
+    .cookiesClearAll()
     .goto(URLS.home)
     .wait(ELES.gotoLogin)
     .click(ELES.gotoLogin)
