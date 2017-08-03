@@ -14,21 +14,26 @@ const run = () => {
     .click(ELES.gotoLogin)
     .wait(ELES.usernameLoginButton)
     .click(ELES.usernameLoginButton)
+    .wait(500)
     .wait(ELES.usernameInput)
     .type(username, ELES.usernameInput)
     .type(password, ELES.passwordInput)
-    // .click(ELES.loginButton)
-    // .wait(ELES.checkinBtn)
-    .screenshot()
-    .then((screenshot) => {
-      console.log({ screenshot });
-      return chromeless.end();
-    });
-  //   .click(ELES.checkinBtn)
-  //   .wait(ELES.checkinSuccess)
-  //   // "签到成功" if success
-  //   .evaluate(selector => document.querySelector(selector).innerText, ELES.checkinSuccess)
-  //   .end();
+    .click(ELES.loginButton)
+    .wait(ELES.checkinBtn)
+    .click(ELES.checkinBtn)
+    .wait(ELES.checkinSuccess)
+    // "签到成功" if success
+    .evaluate(selector => document.querySelector(selector).innerText, ELES.checkinSuccess)
+    .end();
+  // .then((text) => {
+  //   console.log({ text });
+  //   return chromeless.end();
+  // });
+  // .screenshot()
+  // .then((screenshot) => {
+  //   console.log({ screenshot });
+  //   return chromeless.end();
+  // });
 };
 
 module.exports = {
