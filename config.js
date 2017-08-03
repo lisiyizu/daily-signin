@@ -1,9 +1,12 @@
+const isDev = process.env.NODE_ENV === 'dev';
+
 const config = {
   chromeless: {
-    remote: {
-      endpointUrl: process.env.CL_URL,
-      apiKey: process.env.CL_KEY,
-    },
+    debug: isDev,
+    // remote: {
+    //   endpointUrl: process.env.CL_URL,
+    //   apiKey: process.env.CL_KEY,
+    // },
   },
   site: process.env.SITE || 'smzdm',
   isBase64: Boolean(process.env.ISBASE64),
@@ -85,7 +88,7 @@ const config = {
     },
   },
   nightmare: {
-    show: process.env.NODE_ENV === 'dev',
+    show: isDev,
     webPreferences: {
       webSecurity: false,
       images: false,

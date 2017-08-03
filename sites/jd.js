@@ -15,10 +15,10 @@ const run = () => {
     .wait(ELES.usernameLoginButton)
     .click(ELES.usernameLoginButton)
     .wait(ELES.usernameInput)
-    .type(ELES.usernameInput, username)
-    .type(ELES.passwordInput, password)
-    .click(ELES.loginButton)
-    .wait(ELES.checkinBtn)
+    .type(username, ELES.usernameInput)
+    .type(password, ELES.passwordInput)
+    // .click(ELES.loginButton)
+    // .wait(ELES.checkinBtn)
     .screenshot()
     .then((screenshot) => {
       console.log({ screenshot });
