@@ -3,8 +3,8 @@ LABEL maintainer "palydingnow@gmail.com"
 
 WORKDIR /src-app
 COPY ./ /src-app
-RUN npm i --production && \
-    npm cache clean --force
+RUN npm i --production \
+  && npm cache clean --force
 
 ENV CHROME_PATH=/usr/bin/google-chrome-stable
 RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
