@@ -5,6 +5,8 @@ const { orc } = require('../remote/baidu_ai');
 
 const { urls: URLS, elements: ELES } = config.sites.v2ex;
 
+let retryCount = 3;
+
 const getCaptchaWords = async (page) => {
   await page.waitForSelector(ELES.captchaImage);
 
@@ -20,22 +22,44 @@ const getCaptchaWords = async (page) => {
   return captchaWords;
 };
 
-const run = async () => {
-  const browser = await puppeteer.launch(config.puppeteer);
-  const page = await browser.newPage();
+const isLoginFailed = async (page) => {
+  const message = await page.$eval(ELES.loginIssue, div => div.text());
+  console.log('isLoginFailed.message', { message });
+  return message !== '';
+};
 
-  const { username, password } = config.profile;
-
+const loginProcess = async (page) => {
   await page.goto(URLS.signin);
   const captchaWords = await getCaptchaWords(page);
   console.log('captchaWords', { captchaWords });
 
+  const { username, password } = config.profile;
   await page.type(ELES.usernameInput, username);
   await page.type(ELES.passwordInput, password);
   await page.type(ELES.captchaInput, captchaWords);
 
   await page.screenshot({ path: './dev-images/v2ex-before-login.png' });
   await page.click(ELES.loginButton);
+  await page.wait(2000);
+
+  const isFailed = await isLoginFailed(page);
+  if (isFailed) {
+    if (retryCount < 0) {
+      throw new Error('login failed and out of retry');
+    }
+
+    retryCount -= 1;
+    await loginProcess(page);
+  }
+};
+
+const run = async () => {
+  const browser = await puppeteer.launch(config.puppeteer);
+  const page = await browser.newPage();
+
+  // login with retry
+  await loginProcess(page);
+
   await page.waitForSelector(ELES.gotoDailySignin);
   await page.screenshot({ path: './dev-images/v2ex-after-login.png' });
 
