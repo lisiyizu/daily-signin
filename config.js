@@ -75,12 +75,8 @@ const config = {
       },
     },
   },
-  nightmare: {
-    show: process.env.NODE_ENV === 'dev',
-    webPreferences: {
-      webSecurity: false,
-      images: false,
-    },
+  puppeteer: {
+    headless: process.env.NODE_ENV === 'dev',
   },
 };
 

@@ -21,7 +21,7 @@ const getCaptchaWords = async (page) => {
 };
 
 const run = async () => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch(config.puppeteer);
   const page = await browser.newPage();
 
   const { username, password } = config.profile;
@@ -39,12 +39,13 @@ const run = async () => {
   await page.waitForSelector(ELES.gotoDailySignin);
   await page.screenshot({ path: './dev-images/v2ex-after-login.png' });
 
-  //   .click(ELES.gotoDailySignin)
-  //   .wait(ELES.dailySigninButton)
-  //   .click(ELES.dailySigninButton)
-  //   .wait(ELES.dailySigninResult)
+  await page.click(ELES.gotoDailySignin);
+  await page.waitForSelector(ELES.dailySigninButton);
+  await page.screenshot({ path: './dev-images/v2ex-daily-mission-page.png' });
+  await page.click(ELES.dailySigninButton);
+  await page.waitForSelector(ELES.dailySigninResult);
+  await page.screenshot({ path: './dev-images/v2ex-daily-mission-result.png' });
   //   .evaluate(selector => document.querySelector(selector).innerText, ELES.dailySigninResult)
-  //   .end();
 
   await browser.close();
 };
