@@ -1,4 +1,9 @@
 const config = {
+  baidu_ai: {
+    app_id: process.env.BAIDU_API_ID,
+    api_key: process.env.BAIDU_API_KEY,
+    secret_key: process.env.BAIDU_SECRET_KEY,
+  },
   site: process.env.SITE || 'smzdm',
   isBase64: Boolean(process.env.ISBASE64),
   profile: {
