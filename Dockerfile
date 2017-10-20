@@ -14,6 +14,5 @@ WORKDIR /src-app
 COPY --from=dependencies /app/node_modules ./node_modules
 
 COPY ./ /src-app
-COPY . .
 
 CMD npm start
