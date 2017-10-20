@@ -28,7 +28,7 @@ const isLoginFailed = async (page) => {
     return false;
   }
 
-  const message = await page.$eval(ELES.loginIssue, div => div.text());
+  const message = await page.$eval(ELES.loginIssue, div => div.innerText);
   console.log('isLoginFailed.message', { message });
   return message !== '';
 };
@@ -54,6 +54,7 @@ const loginProcess = async (page) => {
     }
 
     retryCount -= 1;
+    console.log('loginProcess.retryCount', { retryCount });
     await loginProcess(page);
   }
 };
