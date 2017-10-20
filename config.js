@@ -58,7 +58,7 @@ const config = {
         passwordInput: '#password',
         loginButton: '#login_submit',
         userInfo:
-          '#index-head > div.J_entry.entry > div.user-wrap > div.user > div.user-info.not-login.J_info > a',
+          '#index-head > div.J_entry.entry > div.user-wrap > div.user > div.user-info.J_info',
         usernameLink:
           '#index-head > div.J_entry.entry > div.user-wrap > div.user > div.user-name.J_name > a',
         dailySigninButton:

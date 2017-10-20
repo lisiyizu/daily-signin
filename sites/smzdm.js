@@ -4,7 +4,7 @@ const config = require('../config');
 
 const { urls: URLS, elements: ELES } = config.sites.smzdm;
 
-const imageSuffix = ['.png', '.jpg'];
+// const imageSuffix = ['.png', '.jpg'];
 
 const getLoginFrame = (page) => {
   const childFrames = page.mainFrame().childFrames();
@@ -41,11 +41,11 @@ const loginProcess = async (page) => {
 
   const { username, password } = config.profile;
   await loginFrame.waitForSelector(ELES.usernameInput);
-  await page.screenshot({ path: './dev-images/smzdm-before-fill-username.png' });
+  await page.screenshot({
+    path: './dev-images/smzdm-before-fill-username.png',
+  });
   await framePageMethods.type(loginFrame, ELES.usernameInput, username);
   await framePageMethods.type(loginFrame, ELES.passwordInput, password);
-  // for js
-  await page.waitFor(100);
 
   await page.screenshot({ path: './dev-images/smzdm-before-login.png' });
   await framePageMethods.click(loginFrame, ELES.loginButton);
@@ -74,15 +74,23 @@ const run = async () => {
   await loginProcess(page);
 
   await page.waitForNavigation();
+  await page.screenshot({
+    path: './dev-images/smzdm-after-login-navigation.png',
+  });
   await page.waitForSelector(ELES.userInfo);
-  await page.screenshot({ path: './dev-images/smzdm-after-login.png' });
-  //   .wait(5000)
-  //   .click(ELES.dailySigninButton)
-  //   // wait to done
-  //   .wait(1000)
-  //   // "已签到2天" if success
-  //   .evaluate(selector => document.querySelector(selector).innerText, ELES.dailySigninButton)
-  //   .end();
+
+  await page.click(ELES.dailySigninButton);
+  await page.screenshot({ path: './dev-images/smzdm-after-click-signin.png' });
+  await page.waitFor(500);
+
+  const dailySigninButtonMessage = await page.$eval(
+    ELES.dailySigninButton,
+    // @ts-ignore
+    div => div.innerText,
+  );
+  console.log('smzdm.dailySigninButton.message', {
+    message: dailySigninButtonMessage,
+  });
 
   await browser.close();
 };
