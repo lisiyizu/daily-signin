@@ -1,4 +1,4 @@
-FROM node:8.1.2-slim
+FROM node:8.7.0-alpine
 LABEL maintainer "palydingnow@gmail.com"
 
 WORKDIR /src-app
