@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/yidinghan/daily-signin#readme",
   "dependencies": {
+    "baidu-aip-sdk": "^1.4.1",
     "puppeteer": "^0.12.0"
   },
   "devDependencies": {
