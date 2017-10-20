@@ -1,27 +1,38 @@
+const puppeteer = require('puppeteer');
+
 const config = require('../config');
-
-const Nightmare = require('nightmare');
-
-const nightmare = Nightmare(config.nightmare);
 
 const { urls: URLS, elements: ELES } = config.sites.v2ex;
 
-const run = () => {
+const run = async () => {
+  const browser = await puppeteer.launch({ headless: false });
+  const page = await browser.newPage();
+
   const { username, password } = config.profile;
 
-  return nightmare
-    .goto(URLS.signin)
-    .wait(ELES.usernameInput)
-    .type(ELES.usernameInput, username)
-    .type(ELES.passwordInput, password)
-    .click(ELES.loginButton)
-    .wait(ELES.gotoDailySignin)
-    .click(ELES.gotoDailySignin)
-    .wait(ELES.dailySigninButton)
-    .click(ELES.dailySigninButton)
-    .wait(ELES.dailySigninResult)
-    .evaluate(selector => document.querySelector(selector).innerText, ELES.dailySigninResult)
-    .end();
+  await page.goto(URLS.signin);
+  await page.waitForSelector(ELES.captchaImage);
+  const captchaElement = await page.$(ELES.captchaImage);
+  const captchaBuffer = await captchaElement.screenshot({ path: 'v2ex-captcha.png' });
+  const captchaBase64 = captchaBuffer.toString('base64');
+  console.log({ captchaBase64 });
+
+  // return nightmare
+  //   .goto(URLS.signin)
+  //   .wait(ELES.usernameInput)
+  //   .type(ELES.usernameInput, username)
+  //   .type(ELES.passwordInput, password)
+  //   .click(ELES.loginButton)
+  //   .wait(ELES.gotoDailySignin)
+  //   .click(ELES.gotoDailySignin)
+  //   .wait(ELES.dailySigninButton)
+  //   .click(ELES.dailySigninButton)
+  //   .wait(ELES.dailySigninResult)
+  //   .evaluate(selector => document.querySelector(selector).innerText, ELES.dailySigninResult)
+  //   .end();
+
+  await page.screenshot({ path: 'v2ex-test.png' });
+  await browser.close();
 };
 
 module.exports = {
