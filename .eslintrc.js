@@ -1,8 +1,9 @@
 module.exports = {
   extends: 'airbnb-base',
-  plugins: [
-    'import',
-  ],
+  rules: {
+    'new-cap': 0,
+  },
+  plugins: ['import'],
   globals: {
     document: true,
   },

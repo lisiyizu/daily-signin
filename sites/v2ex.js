@@ -13,9 +13,9 @@ const run = async () => {
   await page.goto(URLS.signin);
   await page.waitForSelector(ELES.captchaImage);
   const captchaElement = await page.$(ELES.captchaImage);
-  const captchaBuffer = await captchaElement.screenshot({ path: 'v2ex-captcha.png' });
+  const captchaBuffer = await captchaElement.screenshot();
   const captchaBase64 = captchaBuffer.toString('base64');
-  console.log({ captchaBase64 });
+  // console.log({ captchaBase64 });
 
   // return nightmare
   //   .goto(URLS.signin)
@@ -31,7 +31,7 @@ const run = async () => {
   //   .evaluate(selector => document.querySelector(selector).innerText, ELES.dailySigninResult)
   //   .end();
 
-  await page.screenshot({ path: 'v2ex-test.png' });
+  await page.screenshot({ path: './dev-images/v2ex-test.png' });
   await browser.close();
 };
 
