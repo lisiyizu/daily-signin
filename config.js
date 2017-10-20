@@ -67,6 +67,7 @@ const config = {
         captchaImage: '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(3) > td:nth-child(2) > div:nth-child(1)',
         usernameInput: '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(1) > td:nth-child(2) > input',
         passwordInput: '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(2) > td:nth-child(2) > input',
+        captchaInput: '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(3) > td:nth-child(2) > input',
         loginButton: '#Main > div.box > div.cell > form > table > tbody > tr:nth-child(3) > td:nth-child(2) > input.super.normal.button',
         gotoDailySignin: '#Rightbar > div:nth-child(4) > div > a',
         dailySigninButton: '#Main > div.box > div:nth-child(2) > input',

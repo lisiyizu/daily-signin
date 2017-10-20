@@ -13,9 +13,9 @@ const getCaptchaWords = async (page) => {
   const captchaBase64 = captchaBuffer.toString('base64');
 
   const orcResult = await orc.webImage(captchaBase64, { language_type: 'ENG' });
-  console.debug({ orcResult });
+  console.log('orcResult', JSON.stringify(orcResult));
   // @ts-ignore
-  const captchaWords = orc.parserWordsResult(orcResult);
+  const captchaWords = orc.parseWordsResult(orcResult);
 
   return captchaWords;
 };
@@ -27,14 +27,18 @@ const run = async () => {
   const { username, password } = config.profile;
 
   await page.goto(URLS.signin);
-  const captchaWords = getCaptchaWords(page);
-  console.debug({ captchaWords });
+  const captchaWords = await getCaptchaWords(page);
+  console.log('captchaWords', { captchaWords });
 
-  //   .wait(ELES.usernameInput)
-  //   .type(ELES.usernameInput, username)
-  //   .type(ELES.passwordInput, password)
-  //   .click(ELES.loginButton)
-  //   .wait(ELES.gotoDailySignin)
+  await page.type(ELES.usernameInput, username);
+  await page.type(ELES.passwordInput, password);
+  await page.type(ELES.captchaInput, captchaWords);
+
+  await page.screenshot({ path: './dev-images/v2ex-before-login.png' });
+  await page.click(ELES.loginButton);
+  await page.waitForSelector(ELES.gotoDailySignin);
+  await page.screenshot({ path: './dev-images/v2ex-after-login.png' });
+
   //   .click(ELES.gotoDailySignin)
   //   .wait(ELES.dailySigninButton)
   //   .click(ELES.dailySigninButton)
@@ -42,7 +46,6 @@ const run = async () => {
   //   .evaluate(selector => document.querySelector(selector).innerText, ELES.dailySigninResult)
   //   .end();
 
-  await page.screenshot({ path: './dev-images/v2ex-test.png' });
   await browser.close();
 };
 
