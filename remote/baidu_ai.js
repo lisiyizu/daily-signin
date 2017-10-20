@@ -12,14 +12,15 @@ const orc = new baiduAipSdk.ocr(
 //   words_result_num: 1,
 //   words_result: [ { words: ' GKPGAOSL' } ] }
 // @ts-ignore
-orc.parserWordsResult = (data) => {
+orc.parseWordsResult = (data) => {
   if (data.words_result_num < 1) {
-    return '';
+    throw new Error('no words are detected');
   }
 
-  const words = data.words_result[0].replace(/[^A-Za-z0-9]/g, '');
+  const { words_result: [{ words }] } = data;
 
-  return words;
+  const parsedWords = words.replace(/[^A-Za-z0-9]/g, '');
+  return parsedWords;
 };
 
 module.exports = { orc };
