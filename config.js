@@ -52,7 +52,8 @@ const config = {
       },
       elements: {
         login: '.J_login_trigger',
-        loginIframe: '#J_login_iframe',
+        loginIframeID: '#J_login_iframe',
+        loginIframeName: 'J_login_iframe',
         usernameInput: '#username',
         passwordInput: '#password',
         loginButton: '#login_submit',

@@ -4,10 +4,26 @@ const config = require('../config');
 
 const { urls: URLS, elements: ELES } = config.sites.smzdm;
 
+const getLoginFrame = (page) => {
+  const childFrames = page.mainFrame().childFrames();
+  console.log('getLoginFrame.childFrames.length', childFrames.length);
+  const loginFrame = childFrames.find(frame => frame.name() === ELES.loginIframeName);
+  return loginFrame;
+};
+
 const loginProcess = async (page) => {
   // const { username, password } = config.profile;
   await page.goto(URLS.home);
   await page.screenshot({ path: './dev-images/smzdm-home.png' });
+
+  await page.waitForSelector(ELES.login);
+  await page.click(ELES.login);
+  await page.waitForSelector(ELES.loginIframeID);
+  await page.screenshot({ path: './dev-images/smzdm-login-iframe.png' });
+  await page.waitFor(100);
+
+  const loginFrame = getLoginFrame(page);
+  console.log('loginProcess.loginFrame.name', loginFrame.name());
 };
 
 const run = async () => {
@@ -18,12 +34,6 @@ const run = async () => {
   // login with retry
   await loginProcess(page);
 
-  // return nightmare
-  //   .goto(URLS.home)
-  //   .wait(ELES.login)
-  //   .click(ELES.login)
-  //   .wait(ELES.loginIframe)
-  //   .enterIFrame(ELES.loginIframe)
   //   .wait(ELES.usernameInput)
   //   .type(ELES.usernameInput, username)
   //   .type(ELES.passwordInput, password)
