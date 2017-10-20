@@ -76,7 +76,7 @@ const config = {
     },
   },
   puppeteer: {
-    headless: process.env.NODE_ENV === 'dev',
+    headless: process.env.NODE_ENV !== 'dev',
   },
 };
 
