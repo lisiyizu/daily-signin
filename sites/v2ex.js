@@ -23,6 +23,11 @@ const getCaptchaWords = async (page) => {
 };
 
 const isLoginFailed = async (page) => {
+  // element not exists
+  if (!(await page.$(ELES.loginIssue))) {
+    return false;
+  }
+
   const message = await page.$eval(ELES.loginIssue, div => div.text());
   console.log('isLoginFailed.message', { message });
   return message !== '';
@@ -40,7 +45,7 @@ const loginProcess = async (page) => {
 
   await page.screenshot({ path: './dev-images/v2ex-before-login.png' });
   await page.click(ELES.loginButton);
-  await page.wait(2000);
+  await page.waitFor(2000);
 
   const isFailed = await isLoginFailed(page);
   if (isFailed) {
