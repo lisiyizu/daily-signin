@@ -47,7 +47,7 @@ const config = {
     },
     smzdm: {
       urls: {
-        home: 'http://www.smzdm.com',
+        home: 'https://www.smzdm.com',
         login: 'https://zhiyou.smzdm.com/user/login/ajax_check',
       },
       elements: {
