@@ -1,11 +1,18 @@
-FROM node:8.1.2-slim
+FROM node:8.7.0-alpine AS base
 LABEL maintainer "palydingnow@gmail.com"
 
-COPY ./ /src-app
-WORKDIR /src-app
-RUN npm i --production && \
-      npm cache clean --force && \
-      apt-get update && \
-      apt-get install -y libgtk2.0-0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 xvfb
+WORKDIR /app
+COPY package.json .
+COPY package-lock.json .
 
-CMD xvfb-run --server-args="-screen 0 1024x768x24" npm start
+FROM base AS dependencies
+RUN npm set progress=false && npm config set depth 0
+RUN npm install --only=production
+
+FROM base AS release
+WORKDIR /src-app
+COPY --from=dependencies /app/node_modules ./node_modules
+
+COPY ./ /src-app
+
+CMD npm start
