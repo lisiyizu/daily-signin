@@ -20,15 +20,26 @@ smzdm, v2ex, jd jr, jd daily signin script
 | DUSERNAME | 对应站点的用户名 | username of your account |
 | DPASSWORD | 对应站点的密码 | password of yuur account |
 | ISBASE64 | 是否对需要用 base64 decode 密码 | Whether it is necessary to use the base64 decode password |
-| DEBUG | NODEJS 常见的 debug flag，可以用 `nightmare:action*` 来查看更多信息 | NODE JS common debugging signs, you can use `nightmares: action *` to see more information |
+| BAIDU_API_ID | 百度 SDK 里面需要到的 API ID， | the API ID that provide by baidu api |
+| BAIDU_API_KEY | 百度 SDK 里面需要到的 API KEY | the API KEY that provide by baidu api |
+| BAIDU_SECRET_KEY | 百度 SDK 里面需要到的 API SECRET KEY | the API SECRET KEY that provide by baidu api |
+| DEBUG | NODEJS 常见的 debug flag，可以用 `puppeteer:action` 来查看更多信息 | NODE JS common debugging signs, you can use `puppeteer:page` to see more information |
 
 
 ## Avaliable Sites
 
- - [smzdm](https://smzdm.com)
- - [v2ex](https://v2ex.com)
- - [jd](https://vip.jd.com)
- - [jdjr](https://vip.jr.jd.com)
+ - [smzdm](https://smzdm.com), WIP
+ - [v2ex](https://v2ex.com), (require baidu ai api id
+ - [jd](https://vip.jd.com), WIP
+ - [jdjr](https://vip.jr.jd.com), WIP
+
+## About Baidu API ID
+
+ - 有些网站的登陆用到了图形验证码（例如 v2ex )
+ - 测试了一下，百度 AI 的 ORC 识别效果是最好的
+ - 虽然识别率也不是 90%，甚至需要 3-5 次尝试才能识别出来一张，但是总好过识别不出来的
+ - 所以，对于验证码的识别，直接使用了百度 AI 的 [SDK](https://github.com/Baidu-AIP/nodejs-sdk)
+ - 至于这个 sdk 用到的三个 KEY 从哪里来，可以看[官方文档](http://ai.baidu.com/docs#/Begin/top)
 
 ## Docker
 
