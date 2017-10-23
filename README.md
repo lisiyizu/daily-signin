@@ -65,3 +65,13 @@ docker run --rm \
 ### Docker Example Output
 
 ![](http://om4h4iqhe.bkt.clouddn.com/daily-signin-docker-output.png)
+
+# Update Notes
+
+## v2
+
+ - 最近 v2ex 的登陆用上了验证码，就用了一下之前一直想用的 baidu ai
+
+ - 恰好 chrome headless 支持的 modules 也很多，就尝试使用了 puppeteer 来重写这个签到脚本
+
+ - 经过实践检验，确实能跑起来
