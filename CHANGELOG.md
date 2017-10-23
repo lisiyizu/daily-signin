@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/yidinghan/daily-signin/compare/v1.4.0...v2.0.0) (2017-10-23)
+
+
+### Bug Fixes
+
+* **baidu:** error usage in parse process ([f551a97](https://github.com/yidinghan/daily-signin/commit/f551a97))
+* **puppeteer:** mirror boolean on headless ([339bf9d](https://github.com/yidinghan/daily-signin/commit/339bf9d))
+* **v2ex:** error selector of login ([b1eb55e](https://github.com/yidinghan/daily-signin/commit/b1eb55e))
+* **v2ex:** if selector exists first ([16b531a](https://github.com/yidinghan/daily-signin/commit/16b531a))
+
+
+### Features
+
+* **baidu:** init orc client ([95a28ad](https://github.com/yidinghan/daily-signin/commit/95a28ad))
+* **smzdm:** finish daily signin process ([eebecd0](https://github.com/yidinghan/daily-signin/commit/eebecd0))
+* **smzdm:** init home page ([a24087a](https://github.com/yidinghan/daily-signin/commit/a24087a))
+* **smzdm:** inside login frame ([d9c7937](https://github.com/yidinghan/daily-signin/commit/d9c7937))
+* **smzdm:** try to click login button ([40a37c4](https://github.com/yidinghan/daily-signin/commit/40a37c4))
+* **v2ex:** add capture image selector ([c40fdbb](https://github.com/yidinghan/daily-signin/commit/c40fdbb))
+* **v2ex:** add retry login process ([86555f4](https://github.com/yidinghan/daily-signin/commit/86555f4))
+* **v2ex:** complete mission part ([786b1f1](https://github.com/yidinghan/daily-signin/commit/786b1f1))
+* **v2ex:** get captcha image ([bf183c7](https://github.com/yidinghan/daily-signin/commit/bf183c7))
+* **v2ex:** type username ([cab6619](https://github.com/yidinghan/daily-signin/commit/cab6619))
+* **v2ex:** use innerText ([4533d13](https://github.com/yidinghan/daily-signin/commit/4533d13))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/yidinghan/daily-signin/compare/v1.2.0...v1.4.0) (2017-07-03)
 
