@@ -23,7 +23,7 @@ smzdm, v2ex, jd jr, jd daily signin script
 | BAIDU_API_ID | 百度 SDK 里面需要到的 API ID， | the API ID that provide by baidu api |
 | BAIDU_API_KEY | 百度 SDK 里面需要到的 API KEY | the API KEY that provide by baidu api |
 | BAIDU_SECRET_KEY | 百度 SDK 里面需要到的 API SECRET KEY | the API SECRET KEY that provide by baidu api |
-| DEBUG | NODEJS 常见的 debug flag，可以用 `puppeteer:action` 来查看更多信息 | NODE JS common debugging signs, you can use `puppeteer:page` to see more information |
+| DEBUG | NODEJS 常见的 debug flag，可以用 `puppeteer:page` or `puppeteer:frame` 来查看更多信息 | NODE JS common debugging signs, you can use `puppeteer:page` or `puppeteer:frame` to see more information |
 
 
 ## Avaliable Sites
