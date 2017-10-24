@@ -47,7 +47,7 @@ const config = {
     },
     smzdm: {
       urls: {
-        home: 'https://www.smzdm.com',
+        home: 'http://www.smzdm.com',
         login: 'https://zhiyou.smzdm.com/user/login/ajax_check',
       },
       elements: {
@@ -94,6 +94,8 @@ const config = {
     headless: process.env.NODE_ENV !== 'dev',
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
     timeout: 10000, // 10s
+    // ignoreHTTPSErrors: true,
+    // executablePath: 'google-chrome-unstable',
     viewport: {
       width: 1920,
       height: 1080,
